@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 function TodoItems({todo}) {
     const [editable, setEditable] = useState(false);
     const [name, setName] = useState(todo.name)
-    const dispatch = useDispatch ();
+    const dispatch = useDispatch();
     return (
         <div>
             
@@ -41,13 +41,14 @@ function TodoItems({todo}) {
                 className = "btn btn-danger mx-2"
                 >Delete</button>
                 <button
-                onClick={() => toggleComplete(todo.id)}>
-                {todo.isComplete ? "UNDO" : "COMPLETE "} 
+                className=  {todo.isComplete == false ? "btn-secondary m-2" : "btn btn-success m-2"} 
+                onClick={() => dispatch(toggleComplete(todo.id))}>
+                {todo.isComplete == false ? "UNDO" : "Done"} 
                 </button>
             </div>
         </div>
     )
 }
 
-export default connect(null, {toggleComplete })(TodoItems);
+export default TodoItems;
 
